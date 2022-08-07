@@ -15,6 +15,10 @@ const [gallery,setGallery]=useState([])
 const [showModal,setShowModal] = useState(false)
     const [largePicture,setLargePicture] =useState('')
 useMemo(()=>{
+  if (!pictures) {
+    return;
+  }
+  
   setLoading(true)
   setPageNumber(1)  
   fetchPictures(pictures)

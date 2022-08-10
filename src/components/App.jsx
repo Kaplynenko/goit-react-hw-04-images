@@ -14,7 +14,8 @@ const [gallery,setGallery]=useState([])
   const [loading,setLoading]= useState(false)
 const [showModal,setShowModal] = useState(false)
     const [largePicture,setLargePicture] =useState('')
-useMemo(()=>{
+
+    useMemo(()=>{
   if (!pictures) {
     return;
   }
@@ -39,7 +40,7 @@ useEffect(()=>{
 setLoading(true);
       fetchPictures(pictures, pageNumber)
         .then(res => {
-          setGallery(state=>[...state,res])
+          setGallery(state=>[...state,...res])
           })
         .catch(error => console.log(error))
         .finally(() => setLoading(false));
@@ -68,7 +69,7 @@ setLoading(true);
     setShowModal(false)
   };
   
-  const loadMore = () => setPageNumber(state=>state+1)
+  const loadMore = () => setPageNumber(state => state + 1)
    
   
 
@@ -82,9 +83,10 @@ setLoading(true);
           <ImageGallery gallery={gallery} handleModal={openModal} />
         )}
         {loading && <Loader />}
-        {gallery.length !== 0 && gallery[gallery.length -1].hitsQuantity >= 12 && (
+        {gallery.length !== 0 && gallery.length >= 12 && (
           <Button loadMore={loadMore} />
         )}
+        
         {showModal && (
           <Modal onClose={closeModal} largePicuretoModal={largePicture} />
         )}

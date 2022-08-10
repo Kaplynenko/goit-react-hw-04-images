@@ -9,7 +9,10 @@ const Searchbar=({onHandlSubmit})=>{
 const [searchValue,setSearchValue]=useState('')
     
   const  handleChange =e=>{
-        setSearchValue(e.currentTarget.value.toLowerCase())
+     
+    setSearchValue(e.currentTarget.value.toLowerCase())
+   
+
     }
   const  handleSubmit = event => {
         event.preventDefault();

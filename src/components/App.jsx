@@ -55,7 +55,8 @@ setLoading(true);
     
   
   const handlePictureSubmit = pictures => {
-    setPictures(pictures);
+    setPictures(state=>[...state,pictures]);
+    
     setPageNumber(1);
     setGallery([]);
   };

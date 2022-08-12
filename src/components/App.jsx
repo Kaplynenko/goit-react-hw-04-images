@@ -54,9 +54,12 @@ setLoading(true);
     
     
   
-  const handlePictureSubmit = pictures => {
-    setPictures(state=>[...state,pictures]);
-    
+  const handlePictureSubmit = picture => {
+    if (picture === pictures) {
+      setPageNumber(state => state+1);
+      return;
+    }
+    setPictures(picture)
     setPageNumber(1);
     setGallery([]);
   };
